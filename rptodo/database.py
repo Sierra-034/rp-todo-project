@@ -50,7 +50,7 @@ class DatabaseHandler:
     def write_todos(self, todo_list: List[Dict[str, Any]]) -> DBResponse:
         try:
             with self._db_path.open('w') as db:
-                json.dump(todo_list, indent=4)
+                json.dump(todo_list, db, indent=4)
             return DBResponse(todo_list, SUCCESS)
         except OSError:
             return DBResponse(todo_list, DB_WRITE_ERROR)
